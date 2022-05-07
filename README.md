@@ -16,12 +16,45 @@ Fully implemented Python code solutions covering the Azure AI Engineer Knowledge
 
 # Lab Environment Setup
 
-These exercises are designed to be completed in a hosted lab environment. If you want to complete them on your own computer, you can do so by installing the following software. You may experience unexpected dialogs and behavior when using your own environment. Due to the wide range of possible local configurations, the course team cannot support issues you may encounter in your own environment.
+These exercises were completed them on my local computer. You can do so by installing the following software. You may experience unexpected dialogs and behavior when using your own environment. Due to the wide range of possible local configurations, the course team cannot support issues you may encounter in your own environment.
 
 > **Note**: The instructions below are for a Windows 10 computer. You can also use Linux or MacOS. You may need to adapt the lab instructions for your chosen OS.
 
 ---
 
+## Provision a Cognitive Services resource
+
+Azure Cognitive Services are cloud-based services that encapsulate artificial intelligence capabilities you can incorporate into your applications. You can provision individual cognitive services resources for specific APIs (for example, **Text Analytics** or **Computer Vision**), or you can provision a general **Cognitive Services** resource that provides access to multiple cognitive services APIs through a single endpoint and key. In this case, you'll use a single **Cognitive Services** resource.
+
+1. Open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
+2. Select the **&#65291;Create a resource** button, search for *cognitive services*, and create a **Cognitive Services** resource with the following settings:
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Choose or create a resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided)*
+    - **Region**: *Choose any available region*
+    - **Name**: *Enter a unique name*
+    - **Pricing tier**: Standard S0
+3. Select the required checkboxes and create the resource.
+4. Wait for deployment to complete, and then view the deployment details.
+5. Go to the resource and view its **Keys and Endpoint** page. This page contains the information that you will need to connect to your resource and use it from applications you develop. Specifically:
+    - An HTTP *endpoint* to which client applications can send requests.
+    - Two *keys* that can be used for authentication (client applications can use either key to authenticate).
+    - The *location* where the resource is hosted. This is required for requests to some (but not all) APIs.
+
+---
+
+## Use the Azure AI Python SDK
+
+You can write code that consumes cognitive services REST APIs directly, but there are software development kits (SDKs) for many popular programming languages. My focus here is on Python. Using the SDK can greatly simplify development of applications that consume cognitive services.
+
+Configuration settings: After obtaining the key and endpoint, or other applicable environment variables from Azure, store them in a `.env` file right beside the Python module
+
+    - **Python**: .env
+
+Open the configuration file and update the configuration values it contains to reflect the **endpoint** and an authentication **key** for your cognitive services resource. Save your changes.
+
+The `.env` files do not appear on the repository, as it is best practice to not expose credentials publicly. Those files are added to `.gitignore`, to precent github from tracking any changes to those files.
+
+---
 ### Base Operating System (Windows 10)
 
 #### Windows 10
