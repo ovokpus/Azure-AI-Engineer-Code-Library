@@ -1,0 +1,1 @@
+curl -X POST "https://ovo-cognitive.cognitiveservices.azure.com//text/analytics/v3.0/languages?" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: 161b8b5d828345b09000e72c1186abb6" --data-ascii "{'documents':[{'id':1,'text':'hello'}]}"
